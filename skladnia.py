@@ -31,3 +31,4 @@ for x in [1, 2, 3]:
         print(x, y)
 
 print("3 > 2 > 1:", 3 > 2 > 1)  # "łańcuszki" porównań - interpretowane jak w matematyce
+
