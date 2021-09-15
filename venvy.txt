@@ -1,0 +1,14 @@
+python -m venv venv
+pip install venv # jeżeli powyższe nie zadziała
+python -m pip install venv  # jeżeli powyższe nie zadziała
+
+Windows:
+venv\Scripts\activate.bat
+Linux:
+source venv/bin/activate
+
+pip install <jakaś paczka>
+
+deactivate
+
+Pycharm: Settings > Project > Python interpreter > Kółko zębate: dodać stworzony venv
