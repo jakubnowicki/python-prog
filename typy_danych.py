@@ -133,6 +133,35 @@ for indeks, element in enumerate(lista[:]):  # [:] jako skrót dla .copy()
         lista.pop(indeks)
     print(element)
 
+lista = [1, 2, 3]
+lista.extend([4, 5])
+assert lista == [1, 2, 3, 4, 5]
+assert 1 in lista
+assert 100 not in lista
+
+lista = [1, 2, 3]
+lista.insert(1, 1.5)
+assert lista == [1, 1.5, 2, 3]
+
+lista = [1, 2, 3]
+lista.reverse()  # w miejscu!
+assert lista == [3, 2, 1]
+
+lista = [2, 1, 3]
+lista.sort()  # w miejscu
+assert lista == [1, 2, 3]
+
+
+lista = ["Dom", "Samochód", "Piesek"]
+lista.sort(key=len)  # w miejscu
+assert lista == ["Dom", "Piesek", "Samochód"]
+
+lista = [2, 1, 3]
+for x in sorted(lista):
+    print(x, end=" ")
+print()
+assert lista == [2, 1, 3]
+
 print("=== tuple ===")
 t = (1, 2, 3)
 print(t)
@@ -182,6 +211,15 @@ crazy_dict = {
     int: 4,
     5: str,
 }
+
+assert d["Anglia"] == d.get("Anglia")
+assert d.get("Anglija", "Lądek Zdrój") == "Lądek Zdrój"
+
+import collections
+dd = collections.defaultdict(int)
+print(dd["cokolwiek"])
+dd["coś innego"] += 1
+print(dd)
 
 print("===None===")
 a = None
