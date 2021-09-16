@@ -15,6 +15,7 @@ s += "!"  # tworzymy nowy str, nie modyfikujemy poprzedniego
 assert s == "Cześć!"
 for litera in "Cześć":  # po str można iterować
     print(litera, end="")
+print()
 assert bool("") == False
 
 assert "Cześć" == 'Cześć'
@@ -30,6 +31,70 @@ if True:
 linia 2"""
 
 assert multiline == multiline2 == multiline3 == multiline4
+
+assert "Warszawa".startswith("War")
+assert "Warszawa".endswith("awa")
+assert "sza" in "Warszawa"
+assert "zsa" not in "Warszawa"
+assert "Warszawa".isalpha()
+assert not "Warszawa123".isalpha()
+assert "12312321".isdigit()
+
+print(" <--> ".join(["ala", "kot", "pies"]))
+#print(" <--> ".join(["ala", 123, True]))  - muszą być str
+
+#Dygresja - funkcja map:
+
+def mapuj(f, col):
+    col2 = []
+    for x in col:
+        col2.append(f(x))
+    return col2
+
+mapuj(str, ["ala", 123, True])
+print(" <--> ".join(mapuj(str, ["ala", 123, True])))
+print(" <--> ".join(map(str, ["ala", 123, True])))  # już zaimplementowane i efektywne pamięciowo
+
+# reversed - przydatne zwłaszcza dla list, tuple
+print(reversed("Adam Małysz"))
+for x in reversed("Adam Małysz"):
+    print(x, end="")
+print()
+print(list(reversed("Adam Małysz")))  # przydatne żeby szybko zobaczyć zwracane elementy
+
+assert " Litwo,   ojczyzno moja\t\t! ".split() == ["Litwo,", "ojczyzno", "moja", "!"]
+assert "Litwo!! Ojczyzno moja!".split("!") == ['Litwo', '', ' Ojczyzno moja', '']
+# .split(', ', 1)
+# .rsplit('-', 1)
+
+print("Cześć".encode('utf-8'))
+assert "Hej".encode('utf-8') == b"Hej"
+assert "Cześć".encode('utf-8').decode('utf-8') == "Cześć"
+
+
+imie = "Konrad"
+a = "100"
+pi = 3.14159265359
+print("Witaj w %s, %s po raz %d" % ("domu", "Konrad", 100))  # jeśli damy %s zamiast %d - będzie rzutowanie
+print("Dostałem wartość: %r" % (a))
+print("Liczba pi: %.2f" % (pi))
+
+print("Witaj w {}, {} po raz {}".format("domu", "Konrad", 100))
+print("Witaj w {1}, {0} po raz {2}".format("Konrad", "domu", 100))
+print("Witaj w {miejsce}, {imie} po raz {licznik}".format(imie="Konrad", miejsce="domu", licznik=100))
+print("Dostałem wartość: {!r}".format(a))
+print("Liczba pi: {:.2f}".format(pi))
+
+# f-string, od pythona 3.6
+print(f"Hej, {imie.upper()}! Dostałem {a}, obliczyłem {1+1}")
+print(f"Dostałem wartość: {a!r}")
+print(f"Liczba pi: {pi:.2f}")
+
+assert "WaWa".lower() == "wawa"
+
+wawa = "Warszawa"
+print(wawa.replace('a', '-!-'), wawa.replace('a', '-!-', 1), wawa.replace('rsza', ''))
+assert wawa == "Warszawa"
 
 print("=== int ===")
 assert bool(0) == False
@@ -135,3 +200,8 @@ print(s)  # dodanie 1 nic nie zmieniło
 
 s2 = {3, 4, 5, "x", "z"}
 print(s | s2, s - s2, s & s2, s ^ s2)
+
+
+print(" === długości ===")
+assert len("Ala") == 3
+assert len([]) == 0

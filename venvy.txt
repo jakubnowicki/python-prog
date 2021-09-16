@@ -9,6 +9,9 @@ source venv/bin/activate
 
 pip install <jakaś paczka>
 
+pip install -r requirements.txt
+pip freeze  # dosyć szczegółowo
+
 deactivate
 
 Pycharm: Settings > Project > Python interpreter > Kółko zębate: dodać stworzony venv
