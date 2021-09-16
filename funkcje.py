@@ -59,3 +59,29 @@ powitaj("Konrad")
 powitaj("Marian", "Hello")
 powitaj("Zbyszek", znak_ramki="#")
 #powitaj("Marian", powitaine="Hello", "#") wszystkie pozycyjne muszą być przed kluczowymi
+
+def srednia(*args):
+    print("Liczę średnią dla", args)
+    return sum(args) / len(args)
+
+print(srednia(1, 2, 3, 4))
+
+def zaloga(**kwargs):
+    result = "Zaloga to:\n"
+    for role, name in kwargs.items():
+        result += f"  {role.replace('_', ' ')}: {name}\n"
+    return result
+
+print(zaloga(kapitan="Rudobrody", pierwszy_oficer="John", bosman="Rudy Jack"))
+
+# piszemy własny odpowiednik str.format()
+def moj_format(template, **kwargs):
+    result = template
+    for name, value in kwargs.items():
+        result = result.replace('%'+name, value)
+    return result
+
+assert moj_format("Witaj %imie w %miejsce", imie="Jan", miejsce="zamek") == "Witaj Jan w zamek"
+assert moj_format("Witaj %imie w %miejsce", imie="Jan") == "Witaj Jan w %miejsce"
+assert moj_format("Witaj %imie", imie="Jan", miejsce="zamek") == "Witaj Jan"
+assert moj_format("Hej") == "Hej"

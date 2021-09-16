@@ -185,6 +185,15 @@ a = "cośtam"
 b = "coś innego"
 a, b = b, a  # prosta zamiana wartość
 
+def funkcja_3argumentowa(x, y, z):
+    return x * y + z ** 2
+funkcja_3argumentowa(*t)  # odpakowanie tupli do poszczególnych argumentów
+
+d = {'promien': 2, 'wysokosc': 1.5}
+def pole_figury(promien, wysokosc):
+    return 3.14 * promien ** 2 * wysokosc / 3
+pole_figury(**d)
+
 print("===dict===")
 d = {"Anglia": "Londyn", "Francja": "Paryż", "Indie": "Bombaj"}
 assert d["Anglia"] == "Londyn"
