@@ -46,3 +46,14 @@ print(d)
 
 with open("example_output.json", 'w', encoding='utf-8') as f:
     json.dump(d, f, indent=4)
+
+# pip install PyYAML
+import yaml
+
+print(yaml.safe_dump(d))
+with open("example.yaml") as f:
+    s = f.read()
+print(yaml.safe_load(s))
+
+with open("example.yaml") as f:
+    print(yaml.safe_load(f))
