@@ -84,3 +84,47 @@ print(biuro.__dict__)
 zabki = [Budynek.NowaZabka() for _ in range(5)]
 for zabka in zabki:
     print(zabka, zabka.adres)
+
+
+### dziedziczenie
+
+class Restauracja(Budynek):
+    def __init__(self, *args, menu=None, **kwargs):
+        print(f"args: {args}, kwargs: {kwargs}")
+        super().__init__(*args, **kwargs)
+        self._menu = menu
+
+    def get_menu(self):
+        return self._menu or "Menu w budowie"
+
+    def __str__(self):
+        return "Restauracja-" + super().__str__()
+
+restauracja = Restauracja("Kuźnia Smaku", "Pierogowa 12", menu="Pierogi, schabowy i rosół")
+print(restauracja, restauracja.get_menu())
+
+
+### wielodziedziczenie
+
+class A:
+    def __init__(self):
+        print("init A")
+
+class B(A):
+    def __init__(self):
+        print("init B")
+        super().__init__()
+        print("koniec initu B")
+
+class C(A):
+    def __init__(self):
+        print("init C")
+        super().__init__()
+
+class D(B, C):
+    def __init__(self):
+        print("init D")
+        super().__init__()
+
+d = D()
+print(D.__mro__)  # przydatna ściągawka!
