@@ -33,3 +33,21 @@ p = pathlib.Path("C:/Users/kurs/test.txt")
 
 shutil.copy(p, "C:/Users/kurs/test_copy.txt")  # można Path albo str
 #shutil.rmtree(...) -- usuwa cały katalog
+
+
+#---------------
+
+f = open("C:/Users/kurs/test.txt")
+text = f.read()
+f.close()
+
+# to samo, ale z wbudowanym try-except
+
+with open("C:/Users/kurs/test.txt") as f:
+    text = f.read()
+
+print("Zawartość pliku:", repr(text))
+
+with open("C:/Users/kurs/test.txt") as f:
+    for line in f:
+        print("#", line.rstrip())

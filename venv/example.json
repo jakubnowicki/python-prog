@@ -1,0 +1,7 @@
+{
+  "klucz - zawsze string": "wartość - nie tylko string",
+  "np. list": [1, 2, "jak widać też int", 1.5, "a nawet flat"],
+  "zagnieżdżone": {"owszem": [["tak"]]},
+  "a różnice": true,
+  "i zamiast None": null
+}
