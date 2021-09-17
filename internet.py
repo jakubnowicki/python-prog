@@ -30,3 +30,19 @@ print(r.status_code, r.text[:300])
 #  flask --- strony internetwe i aplikacje REST
 #  django --- strony internetowe
 
+#------ json i yaml
+
+import json
+s = '{"prosty": "przyklad"}'
+d = json.loads(s)  # ładowanie ze stringa
+print(d['prosty'])
+d['prosty'] = True
+s2 = json.dumps(d)
+print(s2)
+
+with open("example.json", encoding='utf-8') as f:
+    d = json.load(f)
+print(d)
+
+with open("example_output.json", 'w', encoding='utf-8') as f:
+    json.dump(d, f, indent=4)
