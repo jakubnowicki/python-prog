@@ -25,6 +25,11 @@ assert not p.is_dir()
 print("Rozmiar pliku:", p.stat().st_size)
 print(p.parent, p.name, "==>", p.stem, p.suffix)
 
+#Path.unlink() --> kasowanie pliku
 
+import shutil
 
+p = pathlib.Path("C:/Users/kurs/test.txt")
 
+shutil.copy(p, "C:/Users/kurs/test_copy.txt")  # można Path albo str
+#shutil.rmtree(...) -- usuwa cały katalog

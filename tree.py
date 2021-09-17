@@ -14,8 +14,31 @@ Example output:
   - plik2
 """
 
+# zadanie dodatkowe 1:
+#  [katalog]
+#   |- plik
+#   |- plik
+
+# zadanie dodatkowe 2:
+#  [katalog]
+#   |- plik
+#   '- plik
+
+SEP = "  "
+
+
+def print_tree(path, depth=0):
+    for p in path.iterdir():
+        if p.is_dir():
+            print(SEP * depth + "-", f"[{p.name}]")
+            print_tree(p, depth + 1)
+        else:
+            print(SEP * depth + "-", p.name)
+
+
 def main():
-    pass
+    print_tree(Path('.'))
+
 
 if __name__ == '__main__':
     main()
