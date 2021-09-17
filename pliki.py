@@ -1,0 +1,30 @@
+import pathlib
+
+p = pathlib.Path("C:/Windows")
+#p = pathlib.Path("C:\\Windows")
+#p = pathlib.Path(r"C:\Windows")
+#p = pathlib.Path(r"C:\Windows\") - backslash na końcu nie zadziała w r-string
+print(p, repr(p))
+
+print("C:/" / pathlib.Path("Windows"))
+
+p2 = p / "system32"
+print(p2, repr(p2), p2.exists(), p2.is_dir())
+
+# print(list(map(str, p2.iterdir())))
+# for path in p2.iterdir():
+#     print(path)
+
+for path in pathlib.Path('.').iterdir():
+    print("  ", path)
+
+p = pathlib.Path("C:/Users/kurs/NTUSER.DAT")
+assert p.exists()
+assert p.is_file()
+assert not p.is_dir()
+print("Rozmiar pliku:", p.stat().st_size)
+print(p.parent, p.name, "==>", p.stem, p.suffix)
+
+
+
+

@@ -128,3 +128,21 @@ class D(B, C):
 
 d = D()
 print(D.__mro__)  # przydatna ściągawka!
+
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f"Vector({self.x}, {self.y})"
+
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+
+v1 = Vector(2, 3)
+v2 = Vector(5, 1)
+print("Dodajemy", v1, v2)
+print("Dostajemy", v1 + v2)
+v1 += v2  # v1 = v1 + v2
+print("I to samo w zmiennej v1", v1)
