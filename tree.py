@@ -1,4 +1,4 @@
-#import pathlib  # pathlib.Path('.')
+# import pathlib  # pathlib.Path('.')
 from pathlib import Path  # Path('.')
 
 """
@@ -37,8 +37,8 @@ def print_tree(path, depth=0):
 
 
 def main():
-    print_tree(Path('.'))
+    print_tree(Path("."))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -2,6 +2,7 @@ import random
 
 ULICE = ["Marszałkowska", "Długa", "Krótka", "Krakowska", "Piłsudzkiego", "Bracka"]
 
+
 class MojaKlasa:
     def __init__(self):
         print("Działa init!")
@@ -9,8 +10,10 @@ class MojaKlasa:
     def info(self):
         print(f"Jestem obiektem {self} o ID {id(self)}")
 
+
 moj_obiekt = MojaKlasa()
 moj_obiekt.info()
+
 
 class Budynek:
     def __init__(self, nazwa, adres, wysokosc=1):
@@ -32,25 +35,27 @@ class Budynek:
 
     def _update_typ_budynku(self):
         if self._wysokosc > 6:
-            self.typ_budynku = 'wieżowiec'
+            self.typ_budynku = "wieżowiec"
         elif self._wysokosc < 2:
-            self.typ_budynku = 'bungalow'
+            self.typ_budynku = "bungalow"
         else:
-            self.typ_budynku = 'kamienica'
+            self.typ_budynku = "kamienica"
 
     def __str__(self):
         return f"Budynek '{self.nazwa}'"
 
     def __repr__(self):
         if self._wysokosc:
-            return f"Budynek({self.nazwa!r}, {self.adres!r}, wysokosc={self._wysokosc!r})"
+            return (
+                f"Budynek({self.nazwa!r}, {self.adres!r}, wysokosc={self._wysokosc!r})"
+            )
         else:
             return f"Budynek({self.nazwa!r}, {self.adres!r})"
 
-    def pokaz_na_mapie(self, service='google'):
-        if service == 'google':
+    def pokaz_na_mapie(self, service="google"):
+        if service == "google":
             base_url = "https://maps.google.com/show?address="
-        elif service == 'bing':
+        elif service == "bing":
             base_url = "https://maps.bing.com/show?address="
         else:
             raise Exception(f"Mapping service {service} not supported")
@@ -69,7 +74,7 @@ print(repr(biuro))
 print(f"{biuro}: nazwa: {biuro.nazwa}, adres {biuro.adres!r}")
 biuro.nazwa = "Rondo 2000"
 print(f"{biuro}: nazwa: {biuro.nazwa}, adres {biuro.adres!r}")
-#biuro._wysokosc = 4  # nie powinno się tak robić
+# biuro._wysokosc = 4  # nie powinno się tak robić
 biuro.dobuduj_pietro()
 biuro.dobuduj_pietro()
 biuro.dobuduj_pietro()
@@ -88,6 +93,7 @@ for zabka in zabki:
 
 ### dziedziczenie
 
+
 class Restauracja(Budynek):
     def __init__(self, *args, menu=None, **kwargs):
         print(f"args: {args}, kwargs: {kwargs}")
@@ -100,15 +106,20 @@ class Restauracja(Budynek):
     def __str__(self):
         return "Restauracja-" + super().__str__()
 
-restauracja = Restauracja("Kuźnia Smaku", "Pierogowa 12", menu="Pierogi, schabowy i rosół")
+
+restauracja = Restauracja(
+    "Kuźnia Smaku", "Pierogowa 12", menu="Pierogi, schabowy i rosół"
+)
 print(restauracja, restauracja.get_menu())
 
 
 ### wielodziedziczenie
 
+
 class A:
     def __init__(self):
         print("init A")
+
 
 class B(A):
     def __init__(self):
@@ -116,18 +127,22 @@ class B(A):
         super().__init__()
         print("koniec initu B")
 
+
 class C(A):
     def __init__(self):
         print("init C")
         super().__init__()
+
 
 class D(B, C):
     def __init__(self):
         print("init D")
         super().__init__()
 
+
 d = D()
 print(D.__mro__)  # przydatna ściągawka!
+
 
 class Vector:
     def __init__(self, x, y):
@@ -139,6 +154,7 @@ class Vector:
 
     def __add__(self, other):
         return Vector(self.x + other.x, self.y + other.y)
+
 
 v1 = Vector(2, 3)
 v2 = Vector(5, 1)
